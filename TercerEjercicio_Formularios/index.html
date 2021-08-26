@@ -5,7 +5,7 @@
       <meta charset="UTF-8">
       <meta http-equiv="X-UA-Compatible" content="IE=edge">
       <meta name="viewport" content="width=device-width, initial-scale=1.0">
-      <title>FORMULARIOS - Martes, 24 de AGOSTO del 2021</title>
+      <title>FORMULARIOS - [Martes, 24 - Jueves, 25] de AGOSTO del 2021</title>
     </head>
 
     <body>
@@ -78,6 +78,67 @@
         <label for="semester">Sexto semestre</label>
         <br>
 
+        <!-- Jueves, 26 de AGOSTO del 2021 -->
+        <br>
+        <!--
+          textarea: Control de entrada en donde podemos ingresar más texto.
+          Ingresar contenidos más grandes. Al dar enter se puede hacer el salto
+          de párrafo.
+         -->
+        <label for="description"></label>
+        <!--
+          Los valores del textarea son como un estimado del tamaño, pero se
+          puede cambiar el tamaño del cuadro de texto.
+          Si se ponen espacios y demás en el texto default, se incluirán, por lo que hay que mantenerlos dentro de las etiquetas.
+
+          readonly: La propiedad permite que no se pueda editar el texto.
+          disabled: El control se pone de un control más gris.
+        -->
+        <textarea name="description" id="" cols="30"
+          rows="10">Texto por default.</textarea>
+        <textarea readonly="true" name="description" id="" cols="30"
+          rows="10">textarea en modo de solo lectura.</textarea>
+        <textarea disabled="true" name="description" id="" cols="30"
+          rows="10">Texto por default. textarea deshabilitado.</textarea>
+
+        <br>
+        <label for="select">Seleccionar</label>
+        <select name="select" id="">
+          <!--
+            Podemos dar un valor distinto al texto en cada elemento. Incluso
+            puede ser un valor numérico.
+
+            Esto puede ser útil para las bases de datos.
+          -->
+          <option value="1">Primer elemento.</option>
+          <option value="2">Segundo elemento.</option>
+          <option value="3">Tercer elemento.</option>
+        </select>
+
+        <br>
+        <!--
+          Por defecto, cuando pasamos el mouse por encima, cambia el color.
+
+          Se utiliza más que nada cuando no se están manejando datos de un formulario.
+
+          Para evitar que el botón haga el envío de datos al estar dentro de un formulario, agregamos el atributo
+
+            type="button"
+
+          Si no hacemos esto, por defecto enviará la información del formulario
+          dentro del que está.
+        -->
+        <button>Guardar</button>
+        <button type="button">Botón que no envía un formulario.</button>
+
+        <!--
+          Hay un input que permite visualizar de la misma manera, solamente que
+          el texto se pondría en el atributo value en lugar de dentro de las
+          etiquetas, ya que no tiene etiqueta de cierre.
+
+          Sirve más que nada para enviar información de un formulario.
+        -->
+        <input type="submit" value="enviar">
       </form>
     </body>
 
