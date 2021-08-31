@@ -1,0 +1,28 @@
+/* Selector universal */
+* {
+  font-family: "JetBrains Mono Regular";
+}
+
+/* Tiene más peso cuando se definen las propiedades en las etiquetas. */
+
+/*
+Regularmente para la creación de clases primero se crean en los estilos, luego
+ya se va poniendo en donde se necesite.
+*/
+
+p {
+  color: red;
+}
+
+/* ----------------------------- Selector de ID. ---------------------------- */
+#p1 {
+  text-align: justify;
+  color: black;
+}
+
+/* ---------------------------- Selector de clase --------------------------- */
+
+/* El nombre de las clases deben ser significativas respecto a su función. */
+.border {
+  border: 1px solid black;
+}
