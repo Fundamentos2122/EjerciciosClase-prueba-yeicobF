@@ -26,3 +26,85 @@ p {
 .border {
   border: 1px solid black;
 }
+
+/* ---------- Atributo creado por nosotros, ya que HTML lo permite. --------- */
+/*
+Cuando se ponen los mismos estilos se termina sobrescribiendo con el último
+que se definió.
+*/
+
+/* Solo indicamos que tenga el atrivuto, no importa el valor. */
+div[atributo-1] {
+  font-family: "JetBrains Mono";
+}
+
+/* 
+Puedes poner también solo el atributo sin tener que estar en una etiqueta. 
+
+- Aplica solo con que esté el atributo. No debe contener algo en específico.
+*/
+[atributo-1] {
+  color: red;
+}
+
+/* 
+Aquí ya importa el valor que vaya dentro del atributo. 
+
+- La cadena debe ser tal cual a lo que pusimos en el atributo.
+*/
+[atributo-1="Párrafo uno"] {
+  font-size: 20px;
+}
+
+/*
+(|): Lleva un "pipe? (no estoy seguro de que se escriba así)" antes del igual.
+
+- Debe de comenzar con la cadena que está entre comillas.
+- Lo demás no importa lo que contenga mientras tenga esta cadena al inicio
+del atributo.
+- Debe coincidir la PALABRA COMPLETA.
+
+- Los atributos por lo general separan las cadenas con guiones:
+
+Párrafo-otra-palabra
+*/
+[atributo-1|="Párrafo"] {
+  font-weight: bold;
+}
+
+/*
+
+(^)
+
+- Con que empiece con los CARACTERES. No debe ser solo la palabra completa.
+- Con que inicie con los caracteres sin importar lo que haya después.
+*/
+[atributo-1^="Párrafo"] {
+  color: brown;
+}
+
+/* ($): Termina con los caracteres dados. */
+[atributo-1$="s"] {
+  margin-left: 10px;
+}
+
+/*
+(~): Puede estar en la cadena pero tiene que ser la palabra completa separada
+por espacios.
+
+- El valor contiene la cadena en cualquier parte del valor, ya sea en medio, al
+inicio, final, no importa. Solamente tiene que ser la palabra completa separada 
+por espacios.
+*/
+[atributo-1~="Párrafo"] {
+  border: 1px solid black;
+}
+
+/* 
+(*): La cadena puede estar dentro con todos sus caracteres, pero no tiene que estar separada por espacios. Solamente con que el atributo contenga todos los caracteres.
+
+- El valor contiene los caracteres dados.
+*/
+[atributo-1*="Párrafo"] {
+  text-transform: uppercase;
+}
