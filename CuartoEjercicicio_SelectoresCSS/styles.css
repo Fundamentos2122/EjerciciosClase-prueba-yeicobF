@@ -1,3 +1,5 @@
+/* Martes, 31 de agosto del 2021. */
+
 /* Selector universal */
 * {
   font-family: "JetBrains Mono Regular";
@@ -26,6 +28,8 @@ p {
 .border {
   border: 1px solid black;
 }
+
+/* -------------------- Jueves, 2 de septiembre del 2021 -------------------- */
 
 /* ---------- Atributo creado por nosotros, ya que HTML lo permite. --------- */
 /*
