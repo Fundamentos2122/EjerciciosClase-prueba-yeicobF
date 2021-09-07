@@ -5,8 +5,10 @@
       <meta charset="UTF-8">
       <meta http-equiv="X-UA-Compatible" content="IE=edge">
       <meta name="viewport" content="width=device-width, initial-scale=1.0">
-      <title>Pseudo-clases y pseudo-elementos - Lunes, 6 de SEPTIEMBRE del
-        2021</title>
+      <title>
+        Pseudo-clases y pseudo-elementos - Lunes, 6 de SEPTIEMBRE del
+        2021
+      </title>
 
       <style>
         /* Pseudo-clase (:) */
@@ -19,7 +21,7 @@
           margin-left: 50px;
         }
 
-        /* Focus: Cuando damos click / nos situamos en el elemento. */
+        /* Focus: Cuando damos click y nos situamos en el elemento. */
         [type="text"]:focus {
           /* box-shadow: desplazamiento-x desplazamiento-y blur color */
           box-shadow: 5px 5px 10px red;
@@ -79,6 +81,26 @@
 
         #p_aux::selection {
           background-color: yellow;
+        }
+
+        /* Especificidad */
+        /*
+        Cuando se tiene la misma especificidad, se aplica el último elemento
+        definido, ya que los estilos son definidos en cascada.
+        */
+        p.p1 {
+          /* Selector Specificity: (0, 1, 1) */
+          color: red;
+        }
+
+        .p2 {
+          /* Selector Specificity: (0, 1, 0) */
+          color: violet;
+        }
+
+        p#ejemplo.p2 {
+          /* p#ejemplo.p2 = Selector Specificity: (1, 1, 1) */
+          color: orange;
         }
 
       </style>
@@ -226,6 +248,24 @@
         voluptatem dignissimos minus nesciunt modi aliquam, aspernatur facilis
         ab ea fugit repellendus sunt laboriosam. A ipsam natus incidunt alias
         voluptatum dolor!
+      </p>
+
+      <!-- Martes, 7 de SEPTIEMBRE del 2021 -->
+      <!-- Especificidad -->
+      <p class="p1 p2">
+        Lorem ipsum dolor, sit amet consectetur adipisicing elit. Assumenda,
+        aperiam!
+      </p>
+      <p class="p1">
+        Lorem, ipsum dolor.
+      </p>
+      <p class="p2">Lorem ipsum dolor sit amet consectetur adipisicing elit.
+        Perferendis reiciendis, voluptatum placeat sit quis quam necessitatibus
+        doloremque consequuntur beatae autem.
+      </p>
+      <p id="ejemplo" class="p2">
+        Lorem ipsum dolor, sit amet consectetur adipisicing elit. Rem,
+        perferendis doloremque totam ratione iusto vero?
       </p>
 
     </body>

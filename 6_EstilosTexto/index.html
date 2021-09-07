@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+
+  <head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Estilos - TEXTO | Martes, 7 de SEPTIEMBRE del 2021</title>
+
+    <!-- Estilos en el HTML para no tener muchos archivos. -->
+    <style>
+      a {
+        /* Modificamos los estilos del enlace. */
+        /* color: #000; */
+        /* color: rgba(0, 0, 0, 1); */
+
+        /* Ya permite poner alpha sin rgba() */
+        color: rgb(0, 0, 0, 0.8);
+        text-decoration: none;
+
+        /* No importa si no se guardó con mayúsculas en la BD. */
+        text-transform: uppercase;
+      }
+
+      /*
+      Se recomienda poner nombres significativos en las clases más que nada
+      cuando no estamos utilizando ningún framework de diseño. Esto sería crear
+      clases predefinidas desde el inicio para no tener que estarlas creando.
+      */
+      .text-center {
+        text-align: center;
+      }
+
+      .text-justify {
+        text-align: justify;
+      }
+
+      .text-underline {
+        text-decoration: underline;
+      }
+
+      .text-capitalize {
+        /*
+        Capitalize puede ser útil en nombres para iniciar con mayúscula cada
+        una de las palabras.
+        */
+        text-transform: capitalize;
+      }
+
+      .indent-50 {
+        /* Solamente la primera línea pone la sangría. */
+        text-indent: 50px;
+      }
+
+      h1 {
+        font-family: "consolas";
+        text-align: center;
+        letter-spacing: 10px;
+        /* text-shadow: desplazamiento-y desplazamiento-x color */
+        text-shadow: 2px 2px rgba(255, 0, 0, 0.473);
+      }
+
+      .line-height-1_5 {
+        /* line-height Es más utilizada en párrafos. */
+        line-height: 1.5;
+      }
+
+    </style>
+  </head>
+
+  <body>
+    <h1>Hola, mundo.</h1>
+
+    <p class="text-center text-capitalize line-height-1_5">
+      Lorem ipsum dolor sit amet consectetur adipisicing elit. Pariatur, laborum
+      at laboriosam, deleniti rem nisi accusantium nulla magnam, voluptates ad
+      eaque nemo dolore alias numquam quasi ducimus cupiditate voluptas nobis!
+    </p>
+
+    <p class="text-underline">
+      Lorem ipsum dolor sit amet consectetur adipisicing elit. Earum nisi
+      provident in amet beatae excepturi accusantium sapiente molestiae nam
+      distinctio a maxime, aperiam quia? Qui maiores vero est eos in.
+    </p>
+
+    <p class="text-justify indent-50">
+      Lorem ipsum dolor sit amet consectetur adipisicing elit. Aut neque, sint
+      at distinctio sunt debitis reprehenderit ipsum sapiente fuga nisi corrupti
+      qui aliquid dolores sit molestiae? Similique illum ipsa quidem.
+    </p>
+
+    <a href="">Esto es un link</a>
+  </body>
+
+</html>
