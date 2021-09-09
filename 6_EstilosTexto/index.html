@@ -9,6 +9,15 @@
 
     <!-- Estilos en el HTML para no tener muchos archivos. -->
     <style>
+      @font-face {
+        font-family: "Cinzel 600";
+        /*
+        Ponemos la fuente que es variable. Si lo es, podemos cambiar sus
+        propiedades directamente. */
+        src: url("fonts/Cinzel/Cinzel-VariableFont_wght.ttf");
+        font-weight: 600;
+      }
+
       a {
         /* Modificamos los estilos del enlace. */
         /* color: #000; */
@@ -53,11 +62,22 @@
       }
 
       h1 {
-        font-family: "consolas";
+        /* font-family: "Cinzel 600"; */
+        
         text-align: center;
         letter-spacing: 10px;
         /* text-shadow: desplazamiento-y desplazamiento-x color */
         text-shadow: 2px 2px rgba(255, 0, 0, 0.473);
+        /*
+        Se especifican varias fuentes por si una no está disponible, que se muestre la otra.
+
+        - Podemos agregar cualquier fuente que queramos aunque no salga entre las opciones.
+
+        - NO SOLO HAY QUE PONER LA FUENTE, SINO TAMBIÉN HAY QUE PONER EL TIPO
+        DE FUENTE, por si no está disponible, que el navegador tome una fuente 
+        del mismo tipo.
+        */
+        font-family: 'Courier New', Courier, monospace;
       }
 
       .line-height-1_5 {
