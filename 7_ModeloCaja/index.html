@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+
+  <head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Modelo de caja - Viernes, 10 de SEPTIEMBRE del 2021</title>
+    <style>
+      /* -- MEDIDA DE LAS CAJAS -- */
+
+      /* VALOR DEFAULT: El ancho de un elemento lo tomará a partir de su
+      contenido */
+      /* * {
+        box-sizing: content-box;
+      } */
+
+      /* NUEVO VALOR: El valor del ancho va a ocupar hasta el borde. */
+      * {
+        box-sizing: border-box;
+      }
+
+      p {
+        /*
+        Cuando la unidad es 0, no se necesita especificar el tipo de medida.
+        */
+        margin: 0;
+
+        /* -- BORDES -- */
+
+        /* border: black 1px solid; */
+        /* border-style: solid;
+        border-color: black;
+        border-width: 1px; */
+
+        /* border-left: dotted red 2px; */
+        border-bottom: dotted red 2px;
+
+        /* -- PADDING -- */
+
+        /* 5px arriba y abajo, 10px izquierda y derecha. */
+        /* padding: 5px 10px; */
+
+        /* 5px arriba, 10px eje horizontal, 8px abajo. */
+        padding: 5px 10px 8px;
+
+        /* -- DISPLAY -- */
+        /* display: inline; */
+        display: inline-block;
+
+      }
+
+      div {
+        border: solid 1px;
+        /* display: inline; */
+        display: inline-block;
+        padding: 10px;
+        width: 200px;
+
+        /* -- visibility: hidden; -- */
+        /*
+        Con visibility: hidden; se queda todo el espacio que ocupa, solamente no se ve.
+        */
+        /* visibility: hidden; */
+      }
+
+    </style>
+  </head>
+
+  <body>
+    <h1>visibility: hidden</h1>
+    <!--
+      Se ocultan los elementos, pero no se puede copiar y ocupa todo el espacio que originalmente ocupa.
+    -->
+    <p style="visibility: hidden;">
+      Lorem ipsum, dolor sit amet consectetur adipisicing elit. Fugiat magni
+      doloribus nemo ipsa sit aperiam assumenda voluptate dicta nostrum iste
+      quasi ex recusandae, debitis cumque qui sunt quas excepturi deserunt!
+    </p>
+
+    <h1>display: none</h1>
+    <!--
+      Se oculta tanto el contenido como su tamaño. Es decir, no es visible en
+      ningún aspecto.
+    -->
+    <p style="display: none;">
+      Lorem ipsum dolor sit amet consectetur adipisicing elit. Saepe
+      voluptatibus sequi impedit? Facilis consequuntur, dolore cumque harum quae
+      explicabo dolorem corrupti, sunt aut non quasi? Deserunt tenetur commodi
+      inventore quaerat.
+    </p>
+
+    <h1>divs display: inline-block;</h1>
+    <div>Texto 1</div>
+    <div>Texto 2</div>
+
+  </body>
+
+</html>
