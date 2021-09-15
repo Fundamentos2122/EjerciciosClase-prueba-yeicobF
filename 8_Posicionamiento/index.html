@@ -1,19 +1,19 @@
 <!DOCTYPE html>
 <html lang="en">
 
-  <head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>POSICIONAMIENTO - Lunes, 13 de SEPTIEMBRE del 2021</title>
-    <style>
-      #div-1 {
-        display: inline-block;
-        border: 1px solid black;
-        padding: 5px;
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>POSICIONAMIENTO - Lunes, 13 de SEPTIEMBRE del 2021</title>
+  <style>
+    #div-1 {
+      display: inline-block;
+      border: 1px solid black;
+      padding: 5px;
 
-        /* DEFINIENDO EL TIPO DE POSICIONAMIENTO */
-        /* 
+      /* DEFINIENDO EL TIPO DE POSICIONAMIENTO */
+      /* 
         position: relative;
 
         - Mueve elementos desde la posición actual del elemento.
@@ -21,46 +21,46 @@
         - Mover elemento hacia derecha: partimos de la izquierda (left)
         - Mover elemento desde arriba: top
         */
-        /* position: relative; */
+      /* position: relative; */
 
-        position: absolute;
-        left: 20px;
-        /*
+      position: absolute;
+      left: 20px;
+      /*
           top: 15px; Mueve el elemento desde su posición inicial en la página.
         */
-        top: 15px;
-      }
+      top: 15px;
+    }
 
-      #div-2 {
-        position: relative;
-      }
+    #div-2 {
+      position: relative;
+    }
 
-      #div-3 {
-        /*
+    #div-3 {
+      /*
         fixed SIEMPRE ESTARÁ FIJO DE ACUERDO A LA PANTALLA DEL NAVEGADOR.
         Siempre se va a mantener en el MISMO SITIO, incluso cuando se hace 
         scroll.
         */
-        display: inline-block;
-        border: 1px solid black;
-        padding: 5px;
-        height: 300px;
-        position: fixed;
-        right: 0px;
-        top: 200px;
-      }
+      display: inline-block;
+      border: 1px solid black;
+      padding: 5px;
+      height: 300px;
+      position: fixed;
+      right: 0;
+      top: 200px;
+    }
 
-      #div-4 {
-        /*
+    #div-4 {
+      /*
         fixed SIEMPRE ESTARÁ FIJO DE ACUERDO A LA PANTALLA DEL NAVEGADOR.
         Siempre se va a mantener en el MISMO SITIO, incluso cuando se hace 
         scroll.
         */
-        display: inline-block;
-        border: 1px solid black;
-        padding: 5px;
-        width: 500px;
-        /*
+      display: inline-block;
+      border: 1px solid black;
+      padding: 5px;
+      width: 500px;
+      /*
           sticky espera a que definamos sus posiciones.
 
           - Cuando se supera su posición inicial al hacer scroll, se mantienen
@@ -69,122 +69,122 @@
           - Este depende de las posiciones que se le indiquen.
         */
 
-        position: sticky;
-        right: 0px;
-        top: 0px;
+      position: sticky;
+      right: 0;
+      top: 0;
 
-      }
+    }
 
-    </style>
-  </head>
+  </style>
+</head>
 
-  <body>
-    <p>
-      Lorem ipsum, dolor sit amet consectetur adipisicing elit. Eligendi ad,
-      totam quam qui illum quo dolorum vitae repellendus dolore, nesciunt alias
-      ipsum incidunt exercitationem, dignissimos animi temporibus! Quae,
-      distinctio tenetur.
-    </p>
+<body>
+  <p>
+    Lorem ipsum, dolor sit amet consectetur adipisicing elit. Eligendi ad,
+    totam quam qui illum quo dolorum vitae repellendus dolore, nesciunt alias
+    ipsum incidunt exercitationem, dignissimos animi temporibus! Quae,
+    distinctio tenetur.
+  </p>
 
-    <div id="div-2">
-      <!--
+  <div id="div-2">
+    <!--
         Cuando tenemos un elemento padre dentro de otro, de entrada, tomará la
         posición a partir de la página, habrá que indicar la
         posición relativa, por lo que el elemento comenzará a partir del
         elemento padre. Pero, para que esto funcione, el elemento padre deberá
         tener su posición `relative`.
     -->
-      <div id="div-1">
-        Hola, mundo!
-      </div>
+    <div id="div-1">
+      Hola, mundo!
     </div>
+  </div>
 
-    <p>
-      Lorem ipsum, dolor sit amet consectetur adipisicing elit. Eligendi ad,
-      totam quam qui illum quo dolorum vitae repellendus dolore, nesciunt alias
-      ipsum incidunt exercitationem, dignissimos animi temporibus! Quae,
-      distinctio tenetur.
-    </p>
+  <p>
+    Lorem ipsum, dolor sit amet consectetur adipisicing elit. Eligendi ad,
+    totam quam qui illum quo dolorum vitae repellendus dolore, nesciunt alias
+    ipsum incidunt exercitationem, dignissimos animi temporibus! Quae,
+    distinctio tenetur.
+  </p>
 
-    <div id="div-3">
-      Menú lateral fixed
-    </div>
+  <div id="div-3">
+    Menú lateral fixed
+  </div>
 
-    <p>
-      Lorem ipsum, dolor sit amet consectetur adipisicing elit. Eligendi ad,
-      totam quam qui illum quo dolorum vitae repellendus dolore, nesciunt alias
-      ipsum incidunt exercitationem, dignissimos animi temporibus! Quae,
-      distinctio tenetur.
-    </p>
+  <p>
+    Lorem ipsum, dolor sit amet consectetur adipisicing elit. Eligendi ad,
+    totam quam qui illum quo dolorum vitae repellendus dolore, nesciunt alias
+    ipsum incidunt exercitationem, dignissimos animi temporibus! Quae,
+    distinctio tenetur.
+  </p>
 
-    <div id="div-4">Menú lateral STICKY</div>
+  <div id="div-4">Menú lateral STICKY</div>
 
-    <p>
-      Lorem ipsum, dolor sit amet consectetur adipisicing elit. Eligendi ad,
-      totam quam qui illum quo dolorum vitae repellendus dolore, nesciunt alias
-      ipsum incidunt exercitationem, dignissimos animi temporibus! Quae,
-      distinctio tenetur.
-    </p>
-    <p>
-      Lorem ipsum, dolor sit amet consectetur adipisicing elit. Eligendi ad,
-      totam quam qui illum quo dolorum vitae repellendus dolore, nesciunt alias
-      ipsum incidunt exercitationem, dignissimos animi temporibus! Quae,
-      distinctio tenetur.
-    </p>
-    <p>
-      Lorem ipsum, dolor sit amet consectetur adipisicing elit. Eligendi ad,
-      totam quam qui illum quo dolorum vitae repellendus dolore, nesciunt alias
-      ipsum incidunt exercitationem, dignissimos animi temporibus! Quae,
-      distinctio tenetur.
-    </p>
-    <p>
-      Lorem ipsum, dolor sit amet consectetur adipisicing elit. Eligendi ad,
-      totam quam qui illum quo dolorum vitae repellendus dolore, nesciunt alias
-      ipsum incidunt exercitationem, dignissimos animi temporibus! Quae,
-      distinctio tenetur.
-    </p>
-    <p>
-      Lorem ipsum, dolor sit amet consectetur adipisicing elit. Eligendi ad,
-      totam quam qui illum quo dolorum vitae repellendus dolore, nesciunt alias
-      ipsum incidunt exercitationem, dignissimos animi temporibus! Quae,
-      distinctio tenetur.
-    </p>
-    <p>
-      Lorem ipsum, dolor sit amet consectetur adipisicing elit. Eligendi ad,
-      totam quam qui illum quo dolorum vitae repellendus dolore, nesciunt alias
-      ipsum incidunt exercitationem, dignissimos animi temporibus! Quae,
-      distinctio tenetur.
-    </p>
-    <p>
-      Lorem ipsum, dolor sit amet consectetur adipisicing elit. Eligendi ad,
-      totam quam qui illum quo dolorum vitae repellendus dolore, nesciunt alias
-      ipsum incidunt exercitationem, dignissimos animi temporibus! Quae,
-      distinctio tenetur.
-    </p>
-    <p>
-      Lorem ipsum, dolor sit amet consectetur adipisicing elit. Eligendi ad,
-      totam quam qui illum quo dolorum vitae repellendus dolore, nesciunt alias
-      ipsum incidunt exercitationem, dignissimos animi temporibus! Quae,
-      distinctio tenetur.
-    </p>
-    <p>
-      Lorem ipsum, dolor sit amet consectetur adipisicing elit. Eligendi ad,
-      totam quam qui illum quo dolorum vitae repellendus dolore, nesciunt alias
-      ipsum incidunt exercitationem, dignissimos animi temporibus! Quae,
-      distinctio tenetur.
-    </p>
-    <p>
-      Lorem ipsum, dolor sit amet consectetur adipisicing elit. Eligendi ad,
-      totam quam qui illum quo dolorum vitae repellendus dolore, nesciunt alias
-      ipsum incidunt exercitationem, dignissimos animi temporibus! Quae,
-      distinctio tenetur.
-    </p>
-    <p>
-      Lorem ipsum, dolor sit amet consectetur adipisicing elit. Eligendi ad,
-      totam quam qui illum quo dolorum vitae repellendus dolore, nesciunt alias
-      ipsum incidunt exercitationem, dignissimos animi temporibus! Quae,
-      distinctio tenetur.
-    </p>
-  </body>
+  <p>
+    Lorem ipsum, dolor sit amet consectetur adipisicing elit. Eligendi ad,
+    totam quam qui illum quo dolorum vitae repellendus dolore, nesciunt alias
+    ipsum incidunt exercitationem, dignissimos animi temporibus! Quae,
+    distinctio tenetur.
+  </p>
+  <p>
+    Lorem ipsum, dolor sit amet consectetur adipisicing elit. Eligendi ad,
+    totam quam qui illum quo dolorum vitae repellendus dolore, nesciunt alias
+    ipsum incidunt exercitationem, dignissimos animi temporibus! Quae,
+    distinctio tenetur.
+  </p>
+  <p>
+    Lorem ipsum, dolor sit amet consectetur adipisicing elit. Eligendi ad,
+    totam quam qui illum quo dolorum vitae repellendus dolore, nesciunt alias
+    ipsum incidunt exercitationem, dignissimos animi temporibus! Quae,
+    distinctio tenetur.
+  </p>
+  <p>
+    Lorem ipsum, dolor sit amet consectetur adipisicing elit. Eligendi ad,
+    totam quam qui illum quo dolorum vitae repellendus dolore, nesciunt alias
+    ipsum incidunt exercitationem, dignissimos animi temporibus! Quae,
+    distinctio tenetur.
+  </p>
+  <p>
+    Lorem ipsum, dolor sit amet consectetur adipisicing elit. Eligendi ad,
+    totam quam qui illum quo dolorum vitae repellendus dolore, nesciunt alias
+    ipsum incidunt exercitationem, dignissimos animi temporibus! Quae,
+    distinctio tenetur.
+  </p>
+  <p>
+    Lorem ipsum, dolor sit amet consectetur adipisicing elit. Eligendi ad,
+    totam quam qui illum quo dolorum vitae repellendus dolore, nesciunt alias
+    ipsum incidunt exercitationem, dignissimos animi temporibus! Quae,
+    distinctio tenetur.
+  </p>
+  <p>
+    Lorem ipsum, dolor sit amet consectetur adipisicing elit. Eligendi ad,
+    totam quam qui illum quo dolorum vitae repellendus dolore, nesciunt alias
+    ipsum incidunt exercitationem, dignissimos animi temporibus! Quae,
+    distinctio tenetur.
+  </p>
+  <p>
+    Lorem ipsum, dolor sit amet consectetur adipisicing elit. Eligendi ad,
+    totam quam qui illum quo dolorum vitae repellendus dolore, nesciunt alias
+    ipsum incidunt exercitationem, dignissimos animi temporibus! Quae,
+    distinctio tenetur.
+  </p>
+  <p>
+    Lorem ipsum, dolor sit amet consectetur adipisicing elit. Eligendi ad,
+    totam quam qui illum quo dolorum vitae repellendus dolore, nesciunt alias
+    ipsum incidunt exercitationem, dignissimos animi temporibus! Quae,
+    distinctio tenetur.
+  </p>
+  <p>
+    Lorem ipsum, dolor sit amet consectetur adipisicing elit. Eligendi ad,
+    totam quam qui illum quo dolorum vitae repellendus dolore, nesciunt alias
+    ipsum incidunt exercitationem, dignissimos animi temporibus! Quae,
+    distinctio tenetur.
+  </p>
+  <p>
+    Lorem ipsum, dolor sit amet consectetur adipisicing elit. Eligendi ad,
+    totam quam qui illum quo dolorum vitae repellendus dolore, nesciunt alias
+    ipsum incidunt exercitationem, dignissimos animi temporibus! Quae,
+    distinctio tenetur.
+  </p>
+</body>
 
 </html>
