@@ -1,0 +1,143 @@
+/* Sábado, 18 de SEPTIEMBRE del 2021 [10:45 PM - 11:53 PM] */
+
+/* <!-- AUDIOWIDE --> */
+/* <!-- font-family: "Audiowide", cursive; --> */
+@import url(https://fonts.googleapis.com/css2?family=Audiowide&display=swap);
+
+/* AMARANTH
+    font-family: 'Amaranth', sans-serif; */
+@import url(https://fonts.googleapis.com/css2?family=Amaranth:ital,wght@0,400;0,700;1,400;1,700&family=Audiowide&display=swap);
+
+/* Source Sans Pro
+font-family: 'Source Sans Pro', sans-serif; */
+@import url(https://fonts.googleapis.com/css2?family=Amaranth:ital,wght@0,400;0,700;1,400;1,700&family=Audiowide&family=Source+Sans+Pro:ital,wght@0,200;0,300;0,400;0,600;0,700;0,900;1,200;1,300;1,400;1,600;1,700;1,900&display=swap);
+
+* {
+  /*
+  Para que el tamaño no se tomaba desde el contenido, sino desde la caja
+  completa, incluyendo el padding y demás, definiendo no solo el tamaño al
+  contenido, sino a todo completo, incluyendo el padding.
+  */
+  box-sizing: border-box;
+}
+
+body {
+  /* Quitamos el margen del body. */
+  margin: 0;
+}
+
+p {
+  margin-top: 0;
+  font-family: "Amaranth", sans-serif;
+}
+
+#banner {
+  position: relative;
+  background-color: #144661;
+  padding: 16px;
+}
+
+/* Combinadores */
+#banner img {
+  border-radius: 10px;
+}
+
+#banner p {
+  font-family: "Audiowide", cursive;
+  color: white;
+  /* Hacemos que el elemento no se despliegue en otra línea. */
+  display: inline-block;
+  font-size: 50px;
+  left: 182px;
+  position: absolute;
+  /* Quitamos el margen del párrafo. */
+  margin: 0;
+  top: 60px;
+}
+
+.menu-nav {
+  margin: 0;
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  color: white;
+}
+
+.menu-nav > .nav-item {
+  /* Quitamos los puntos de la lista. */
+  list-style: none;
+  /* Queremos que la lista se despliegue de manera horizontal. */
+  display: inline-block;
+  padding: 10px 20px;
+}
+
+.menu-nav > .nav-item:hover {
+  background-color: #551461;
+  cursor: pointer;
+}
+
+/* Contenido */
+
+.container {
+  padding: 20px 20px 20px 80px;
+  /* Para que se autoajuste el tamaño cuando se cambie de tamaño la ventana. */
+  margin-right: 420px;
+  text-align: justify;
+}
+
+/* Tabla */
+
+.table {
+  /* collapse para que los bordes se junten y no queden como espacios. */
+  border-collapse: collapse;
+}
+
+.table > thead {
+  border-bottom: 1px solid black;
+}
+
+.table > tbody > tr {
+  border-bottom: solid 1px lightgray;
+}
+
+/* Side bar */
+
+.side-bar {
+  position: fixed;
+  /* Por ahora le daremos un ancho fijo. */
+  width: 320px;
+  right: 80px;
+  /* Calculamos en donde ponemos el top para que queden a la misma altura. */
+  top: 202px;
+  background-color: #612f14;
+  color: white;
+  padding: 10px 20px;
+}
+
+.form-group {
+  margin-bottom: 8px;
+}
+
+.form-label {
+  font-family: "Source Sans Pro", sans-serif;
+}
+
+.form-control {
+  display: block;
+  width: 100%;
+  padding: 6px 12px;
+  border-radius: 4px;
+  border-color: lightgray;
+}
+
+[required] {
+  background-color: #ffcfcf;
+}
+
+textarea {
+  /* Para que no se pueda estirar su tamaño más grande que el contenedor. */
+  max-width: 100%;
+  min-width: 100%;
+  /* No permitir cambiar el tamaño. */
+  resize: none;
+}

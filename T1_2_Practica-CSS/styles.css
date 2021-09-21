@@ -1,0 +1,144 @@
+/* Sábado, 18 de SEPTIEMBRE del 2021 [10:45 PM - 11:53 PM] */
+
+/* <!-- AUDIOWIDE --> */
+/* <!-- font-family: "Audiowide", cursive; --> */
+@import url(https://fonts.googleapis.com/css2?family=Audiowide&display=swap);
+
+/* AMARANTH
+    font-family: 'Amaranth', sans-serif; */
+@import url(https://fonts.googleapis.com/css2?family=Amaranth:ital,wght@0,400;0,700;1,400;1,700&family=Audiowide&display=swap);
+
+/* Source Sans Pro
+font-family: 'Source Sans Pro', sans-serif; */
+@import url(https://fonts.googleapis.com/css2?family=Amaranth:ital,wght@0,400;0,700;1,400;1,700&family=Audiowide&family=Source+Sans+Pro:ital,wght@0,200;0,300;0,400;0,600;0,700;0,900;1,200;1,300;1,400;1,600;1,700;1,900&display=swap);
+
+* {
+  margin: 0;
+  box-sizing: border-box;
+}
+
+p {
+  font-family: "Amaranth", sans-serif;
+}
+
+#banner {
+  display: inline-block;
+  width: 100%;
+  position: relative;
+  background-color: #144661;
+  padding: 20px;
+}
+
+#banner img {
+  border-radius: 8px;
+}
+
+#banner p {
+  font-family: "Audiowide", cursive;
+  font-size: 45px;
+  display: inline-block;
+  margin-left: 30px;
+  color: hsl(0, 0%, 100%);
+  margin-top: 40px;
+  vertical-align: top;
+}
+
+#banner .menu-nav {
+  right: 0;
+  bottom: 0;
+  display: inline-block;
+  position: absolute;
+  /* Quitamos los bullets de la lista. */
+  list-style: none;
+}
+
+/*
+Indico los selectores de esta forma aunque no sea necesario, solamente para
+hacerlo más "significativo en este caso.
+ */
+#banner .menu-nav .nav-item {
+  padding: 10px 25px;
+  cursor: pointer;
+  display: inline-block;
+  color: white;
+}
+
+#banner .menu-nav .nav-item:hover {
+  background-color: purple;
+}
+
+.container {
+  padding: 20px 100px;
+  padding-right: 20px;
+  width: 920px;
+}
+
+.container p {
+  text-align: justify;
+}
+
+.table {
+  margin-top: 20px;
+  border-collapse: collapse;
+}
+
+.table thead {
+  border-bottom: solid 1px black;
+}
+
+.table thead tr th {
+  padding-bottom: 10px;
+}
+
+.table tbody tr {
+  border-bottom: solid 1px hsl(0, 0%, 88%);
+}
+
+.table td {
+  padding: 10px 20px;
+}
+
+.side-bar {
+  /*
+  Posición absoluta, ya que al no formar parte del contexto del
+  .container, tengo que definir esos elementos de forma manual.
+  
+  - Si el contenido de .container fueran los párrafos y la tabla dentro de un
+  contenedor, y el .side-bar como el contenedor que es; de esta forma, podría
+  utilizar un display: flex; y se acomodarían solos los elementos.
+  */
+  position: fixed;
+  top: 215px;
+  right: 100px;
+  width: 315px;
+  border: solid 1px black;
+  padding: 20px;
+  text-align: justify;
+  background-color: hsl(22, 67%, 23%);
+  color: white;
+}
+
+.side-bar form {
+  font-family: "Source Sans Pro", sans-serif;
+  padding-top: 10px;
+}
+
+.form-group {
+  margin-top: 5px;
+}
+
+.form-label {
+}
+
+.form-control {
+  display: block;
+  border-radius: 3px;
+  border: solid 1px #ffcfcf;
+  background-color: #ffcfcf;
+  width: 100%;
+  min-height: 25px;
+}
+
+.form-control[name="name"] {
+  background-color: white;
+}

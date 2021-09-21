@@ -1,0 +1,129 @@
+/* <!-- AUDIOWIDE --> */
+/* <!-- font-family: "Audiowide", cursive; --> */
+@import url(https://fonts.googleapis.com/css2?family=Audiowide&display=swap);
+
+/* AMARANTH
+    font-family: 'Amaranth', sans-serif; */
+@import url(https://fonts.googleapis.com/css2?family=Amaranth:ital,wght@0,400;0,700;1,400;1,700&family=Audiowide&display=swap);
+
+/* Source Sans Pro
+font-family: 'Source Sans Pro', sans-serif; */
+@import url(https://fonts.googleapis.com/css2?family=Amaranth:ital,wght@0,400;0,700;1,400;1,700&family=Audiowide&family=Source+Sans+Pro:ital,wght@0,200;0,300;0,400;0,600;0,700;0,900;1,200;1,300;1,400;1,600;1,700;1,900&display=swap);
+
+* {
+  margin: 0;
+}
+
+p {
+  font-family: "Amaranth", sans-serif;
+}
+
+#banner {
+  position: relative;
+  background-color: hsl(199, 81%, 23%);
+  display: flex;
+  padding: 20px;
+  align-items: center;
+}
+
+#banner img {
+  border-radius: 8px;
+}
+
+#banner p {
+  font-family: "Audiowide", cursive;
+  font-size: 30px;
+  margin-left: 30px;
+  color: hsl(0, 0%, 100%);
+}
+
+#banner .menu-nav {
+  right: 0;
+  bottom: 0;
+  display: flex;
+  position: absolute;
+  /* Quitamos los bullets de la lista. */
+  list-style: none;
+}
+
+/*
+Indico los selectores de esta forma aunque no sea necesario, solamente para
+hacerlo más "significativo en este caso.
+ */
+#banner .menu-nav .nav-item {
+  padding: 10px 25px;
+  cursor: pointer;
+  color: white;
+}
+
+#banner .menu-nav .nav-item:hover {
+  background-color: purple;
+}
+
+.container {
+  padding: 20px 100px;
+  padding-right: 20px;
+  width: 820px;
+}
+
+.container p {
+  text-align: justify;
+}
+
+.table {
+  margin-top: 20px;
+  border-collapse: collapse;
+}
+
+.table thead {
+  border-bottom: solid 1px black;
+}
+
+.table thead tr th {
+  padding-bottom: 10px;
+}
+
+.table tbody tr {
+  border-bottom: solid 1px hsl(0, 0%, 88%);
+}
+
+.table td {
+  padding: 10px 20px;
+}
+
+.side-bar {
+  /*
+  Posición absoluta, ya que al no formar parte del contexto del
+  .container, tengo que definir esos elementos de forma manual.
+  
+  - Si el contenido de .container fueran los párrafos y la tabla dentro de un
+  contenedor, y el .side-bar como el contenedor que es; de esta forma, podría
+  utilizar un display: flex; y se acomodarían solos los elementos.
+  */
+  position: fixed;
+  top: 190px;
+  right: 100px;
+  width: 270px;
+  border: solid 1px black;
+  padding: 20px;
+  background-color: #612f13;
+}
+
+.side-bar p,
+.side-bar form {
+  position: sticky;
+  top: 0;
+}
+
+.side-bar form {
+  font-family: "Source Sans Pro", sans-serif;
+}
+
+.form-group {
+}
+
+.form-label {
+}
+
+.form-control {
+}
