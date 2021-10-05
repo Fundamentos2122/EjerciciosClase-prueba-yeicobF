@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>2P | Viernes, 1 de OCTUBRE del 2021 - VIEWPORT</title>
+
+  <!-- Media Queries -->
+  <!-- 
+    Solo se recomienda poner unos 4 queries:
+    - Celulares
+    - PC
+    - Laptops
+    - Dispositivos muy grandes, como pantallas 4K.
+   -->
+  <style>
+    html {
+      font-size: 10px;
+    }
+
+    /*
+    Antes de la Media Query, hay que definir estilos para lo que queremos
+    modificar.
+    */
+    p {
+      color: brown;
+      /* Unidades responsivas para el tamaño. */
+      font-size: 1em;
+    }
+
+    div {
+      font-size: 20px;
+    }
+
+    a {
+      /* 
+      rem depende del tamaño de la fuente root, definida con html. Dependen de todo el documento.
+       */
+      font-size: 1.5rem;
+    }
+
+    h1 {
+      /* 
+        Unidades viewport
+        - Casi no son utilizadas.
+        
+      */
+      /* Esta depende del ancho del viewport.
+      font-size: 2vw; */
+
+      /* Esta depende del alto del viewport. */
+      font-size: 5vh;
+    }
+
+    #aux {
+      width: 50%;
+    }
+
+    img {
+      /* El porcentaje depende del elemento padre, no de todo el viewport. */
+      /* width: 25%; */
+      height: 25%;
+    }
+
+    /* Si la pantalla es de 768px o más. */
+    @media (min-width: 768px) {
+
+      /* Modificamos los estilos de los que habíamos definido. */
+      p {
+        color: darkblue;
+      }
+    }
+
+  </style>
+</head>
+
+<body>
+  <h1>Hola, mundo</h1>
+  <div id="aux">
+    <!-- aux: 50% del total 100% -->
+    <!-- img dentro de aux con 25%: 12.5% del tamaño de la pantalla. -->
+    <img src="img/venom-profile-picture.jpg" alt="">
+  </div>
+  <div>
+    <p>
+      Lorem ipsum dolor sit amet consectetur adipisicing elit. Eius praesentium
+      odio voluptatum cumque mollitia, nobis fuga saepe id vitae fugit nam
+      placeat nesciunt totam, laudantium dolorem minima. Officia, sapiente
+      deleniti.
+    </p>
+    <a href="#">Link</a>
+  </div>
+
+
+</body>
+
+</html>
