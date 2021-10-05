@@ -5,29 +5,70 @@
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>2P | Lunes, 4 de OCTUBRE del 2021 - FLEXBOX</title>
+  <title>2P | FLEXBOX | Lunes, 4 de OCTUBRE del 2021</title>
 
 
   <style>
+    #padre {
+      background-color: rgb(36, 36, 119);
+      display: flex;
+      height: 400px;
+      /* Mostrar elementos por filas. */
+      flex-direction: row;
+      /* Alinear elementos verticalmente. */
+      align-items: center;
+    }
+
+    #padre>div {
+      background-color: lightsalmon;
+      padding: 10px;
+      display: flex;
+      /* Alinear elementos verticalmente en el mismo centro o eje. */
+      align-items: baseline;
+    }
+
+    #padre [id] {
+      background-color: lightgray;
+      padding: 6px;
+      /* Fuente relativa al tamaño de la fuente del padre (#padre). */
+      font-size: 2em;
+      margin: 10px;
+    }
+
+    #div-1 {
+      height: 100px;
+    }
+
+    #div-2 {
+      height: 50px;
+    }
+
+    #div-3 {
+      height: 200px;
+    }
 
   </style>
 </head>
 
 <body>
+  <!-- 
+    Combinación Emmet siguiente estructura:
 
-  <div id="div-1">
-
-
-
-    div.
+      div#padre>div>(div#div-${$}*3)
+  -->
+  <div id="padre">
     <div>
-      
-      
-      <div id="div-1">
-        <div>
-          <div id="div-1">
-            <div>
+      <div id="div-1">1</div>
+      <div id="div-2">2</div>
+      <div id="div-3">3</div>
+    </div>
+  </div>
 
+
+  <!-- Combinación Emmet para hacer la siguiente estructura: div#div-${$}*3 -->
+  <!-- <div id="div-1">1</div>
+  <div id="div-2">2</div>
+  <div id="div-3">3</div> -->
 </body>
 
 </html>

@@ -16,7 +16,7 @@ En este parcial vimos los siguientes temas:
 
 ## Fecha del examen
 
-> **^^, 23/SEP [^^ PM]** - **^^-^^, ^^/^^ [^^:^^ PM]**
+> **^^, ^^/SEP [^^ PM]** - **^^-^^, ^^/^^ [^^:^^ PM]**
 
 ### Enlace del repositorio
 
