@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Introducción JS - Document Object Model (DOM) | Lunes, 18 de OCTUBRE del 2021</title>
+</head>
+
+<body>
+  <h1 id="title">Document</h1>
+
+  <!-- 
+    Tenemos este elemento, ya que, mediante Javascript agregaremos el contenido. 
+  -->
+  <div id="h2"></div>
+
+  <p>
+    Lorem ipsum, dolor sit amet consectetur adipisicing elit. Qui pariatur, ad
+    velit, officia distinctio nulla quis fugit ratione eum provident deleniti
+    accusantium eveniet vero, iste tempora. Id veniam ratione commodi.
+  </p>
+  <p>
+    Aperiam error debitis voluptatum doloribus officia facere, tempora ea natus
+    facilis nisi eaque eius repudiandae quia sunt ullam delectus distinctio ut
+    laudantium velit numquam omnis fugit quo cumque. Perferendis, rem.
+  </p>
+  <p>
+    Animi, vitae fuga facilis laborum iste recusandae! Recusandae dolore
+    possimus, accusantium officia deleniti architecto. Natus dignissimos itaque
+    est fugit ad maxime, a, inventore illum odit sit deleniti id ipsa aut.
+  </p>
+
+  <script>
+    // Esto guardaría todo el contenido del HTML.
+    var doc = document;
+
+    // De esta manera podemos visualizar el contenido en JS, aunque no siempre 
+    // es necesario hacerlo.
+    console.log(doc);
+
+    // En esta función no hay que agregar el "#", solo poner el nombre.
+    var title = document.getElementById("title");
+    console.log(title);
+
+    // Modificamos el contenido del elemento "title" en el HTML.
+    title.innerText = "Nuevo título";
+
+    // Obtenemos los 3 párrafos, los cuales, estarán en un arreglo.
+    var p = document.getElementsByName("p");
+    console.log(p);
+
+    // Crear un h2 en el DOM utilizando el método más "correcto", aunque largo.
+    // 
+    // Agregamos el la etiqueta antes del segundo párrafo.
+    crearElementoH2EnDomMetodoLargo = () => {
+      // Creamos un elemento "h2".
+      var h2 = document.createElement("h2");
+
+      // Creamos el texto que estará en el "h2".
+      var text = document.createTextNode("Segundo encabezado");
+
+      // Agregamos el texto anterior al "h2".
+      h2.appendChild(text);
+
+      // Agregamos el "h2" al DOM, ya que por ahora lo tenemos creado, pero no
+      // en el HTML.
+      //
+      // - Hay que acceder al body, ya que en este caso es el padre del párrafo
+      // del que queremos insertar el elemento "h2".
+      //
+      // `document.body`
+      //
+      // - Hay que indicar:
+      // (elementoInsertar, elementoDelCualInsertaremosElementoAntes)
+      document.body.insertBefore(h2, p[1]);
+    }
+
+    // Método más sencillo para poder crear un elemento h2 en el DOM.
+    crearElementoH2EnDomMetodoSencillo = () => {
+      // Este es otro método para poner elementos dentro del DOM con mayor
+      // facilidad.
+      var div_h2 = document.getElementById("h2");
+      div_h2.innerHTML = `
+        <h2>Segundo encabezado</h2>
+        <h3>Tercer encabezado con template string</h3>
+        `;
+    }
+
+  </script>
+</body>
+
+</html>
