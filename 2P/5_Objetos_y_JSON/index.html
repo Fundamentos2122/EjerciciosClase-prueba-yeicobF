@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Objetos y JSON | Jueves, 21 de OCTUBRE del 2021</title>
+</head>
+
+<body>
+  <!-- Vamos a trabajar como si utilizáramos un formulario. -->
+  <!-- form>label[for=username]{Nombre de usuario} -->
+  <form action="" id="login" name="login">
+    <!-- Formulario sencillo de 2 campos. -->
+    <label for="username">Nombre de usuario</label>
+    <input type="text" name="username" autocomplete="off">
+    <br>
+    <label for="password">Contraseña</label>
+    <input type="password" name="password">
+    <br>
+    <input type="submit" value="Enviar">
+  </form>
+
+  <script>
+    /** 
+     * Función para cargar JSON a un formulario. 
+     * 
+     * - Carga el JSON automáticamente al formulario al ser llamada la función.
+     * */
+    function loadForm() {
+      // Creamos cadena de texto JSON.
+      // Al inicio no funcionaba porque tenía una coma (,) antes del corchete 
+      // final.
+      var json = '{"username": "Josué", "password": "1234"}';
+
+      // Convertir JSON a objeto.
+      var data = JSON.parse(json);
+
+      console.log(data);
+
+      // Establecemos los valores de la form.
+      document.forms["login"]["username"].value = data.username;
+      document.forms["login"]["password"].value = data.password;
+    }
+
+    // Event listener para ejecutar hasta que la página esté cargada.
+    document.addEventListener("DOMContentLoaded",
+      function () {
+        // Obtener el evento del submit del formulario.
+
+        // - Forma 1 para obtener formulario.
+        // var login = document.getElementById("login");
+
+        // - Forma 2: Con el name del formulario.
+        var login = document.forms["login"];
+
+        // Parámetro para el evento que detona la función.
+        login.addEventListener("submit",
+          function (evento) {
+            // Prevenir que al presionar el botón se recargue la página.
+            // Previene que el evento default sea activado (o eso entendí).
+            evento.preventDefault();
+
+            // Imprimir elemento del login.
+            console.log(this);
+
+            /** Creamos un objeto. */
+            var data = {
+              // Obtenemos información del formulario con "this.".
+              // Esto sucede porque el objeto que hace la llamada es un 
+              // formulario.
+              username: this["username"].value,
+              password: this["password"].value,
+            };
+
+            // Imprimir objeto.
+            console.log(data);
+
+            /** 
+             * Trabajar con JSON. 
+             * 
+             * Objeto a cadena: JSON.stringify(cadena)
+             * 
+             * - Lo convertimos a una cadena JSON.
+             * */
+            var json = JSON.stringify(data);
+
+            console.log(json);
+          });
+
+        // Cargar formulario a partir de un JSON (definido en la función).
+        loadForm();
+
+      });
+
+  </script>
+</body>
+
+</html>
