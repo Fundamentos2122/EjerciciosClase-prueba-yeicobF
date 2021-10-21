@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>JS - Eventos | Martes, 19 de OCTUBRE del 2021</title>
+</head>
+
+<body>
+  <!-- Código en línea. -->
+  <!-- En este caso, se elimina el botón completamente. -->
+  <button id="btn-1" onclick="document.getElementById('btn-1').remove()">
+    Eliminar 1
+  </button>
+
+  <button id="btn-2">Eliminar 2</button>
+
+  <p id="p1" style="display: block;">Lorem ipsum dolor sit amet consectetur
+    adipisicing elit. Similique
+    rerum incidunt velit provident ea at consectetur quas? Illo consequuntur,
+    facilis ab laboriosam quasi porro aut! Tempore modi maxime perspiciatis
+    magnam!</p>
+
+  <button id="hide">Ocultar / Mostrar</button>
+
+  <script>
+    function borraElemento(id) {
+      document.getElementById(id).remove();
+    }
+
+    // Cuando cargue la página. Esperar a que cargue el documento para agregar 
+    // las demás funciones.
+    // document.onload() // No me deja utilizar los botones.
+
+    // Función especial para esperar a que cargue todo lo del DOM.
+    // - Recibe una función, la cual, puede ser anónima.
+    document.addEventListener("DOMContentLoaded",
+      function () {
+        var btn2 = document.getElementById("btn-2");
+
+        // addEventListener("nombre evento", "funcion a ejecutar")
+        // No se pueden utilizar funciones con parámetros dentro del 
+        // eventListener, ya que tan pronto llega ahí el motor de Javascript, la 
+        // función se ejecuta. Podemos llamar la función dentro de una función 
+        // anónima.
+        btn2.addEventListener("click",
+          function () {
+            // Así llamamos una función con parámetros.
+            // https://ultimatecourses.com/blog/avoiding-anonymous-javascript-functions
+            borraElemento('btn-2');
+
+            // document.getElementById('btn-2').remove();
+          });
+
+        // MOSTRAR Y OCULTAR ELEMENTO DIFERENTE AL DEL CLICK.
+        var hide = document.getElementById('hide');
+        hide.addEventListener('click',
+          function () {
+            var p1 = document.getElementById('p1');
+
+            // Mostra elemento.
+            var display = p1.style.display;
+
+            if (display === 'block')
+              p1.style.display = 'none';
+            else
+              p1.style.display = 'block';
+          });
+      });
+
+  </script>
+</body>
+
+</html>
