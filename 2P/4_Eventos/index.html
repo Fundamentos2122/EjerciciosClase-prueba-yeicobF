@@ -6,12 +6,30 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>JS - Eventos | Martes, 19 de OCTUBRE del 2021</title>
+
+  <style>
+    .color-red {
+      color: red;
+    }
+
+  </style>
 </head>
 
 <body>
   <!-- Código en línea. -->
-  <!-- En este caso, se elimina el botón completamente. -->
-  <button id="btn-1" onclick="document.getElementById('btn-1').remove()">
+  <!-- 
+    En este caso, se elimina el botón completamente. 
+
+    - Lo hacemos con la palabra reservada "this" para afectar directamente al 
+    elemento que llamó al evento.
+  -->
+  <button id="btn-1" onclick="this.remove()">
+    <!-- 
+    - Borrar elemento con un id específico.
+
+    <button id="btn-1" onclick="document.getElementById('btn-1').remove()">
+      
+  -->
     Eliminar 1
   </button>
 
@@ -26,7 +44,7 @@
   <button id="hide">Ocultar / Mostrar</button>
 
   <script>
-    function borraElemento(id) {
+    function borraElementoId(id) {
       document.getElementById(id).remove();
     }
 
@@ -47,9 +65,22 @@
         // anónima.
         btn2.addEventListener("click",
           function () {
+            /** 
+             * Hay una forma más general en donde no tenemos que indicar un 
+             * "id" o así, ya que eso llega a ser redundante y reduce 
+             * posibilidades, por lo que podemos acceder al elemento que activó 
+             * el evento y actuar con él con la palabra reservada "this".
+             * 
+             * - Esto solo se hace cuando se quiere afectar a un mismo elemento.
+             */
+            this.remove();
+
             // Así llamamos una función con parámetros.
+            // 
+            // - Es muy específica y reduce posibilidades, ya que tendríamos que enviar el "id" específico para actuar.
+            // 
             // https://ultimatecourses.com/blog/avoiding-anonymous-javascript-functions
-            borraElemento('btn-2');
+            // borraElementoId('btn-2'); /* Borrar enviando un id. */
 
             // document.getElementById('btn-2').remove();
           });
@@ -67,7 +98,32 @@
               p1.style.display = 'none';
             else
               p1.style.display = 'block';
-          });
+          }
+        );
+
+        // Agregamos elemento al párrafo.
+        // - Evento cuando coloquemos el mouse encima del elemento: 
+        // "mouseover".
+        var p1 = document.getElementById("p1");
+        p1.addEventListener("mouseover",
+          function () {
+            // Cambiarle la clase al ".color-red".
+            // - El "mouseover" deja los elementos que se activaron al pasar el 
+            // mouse por encima aunque sea una vez. 
+            // 
+            // - Para hacer que actúe como el "hover" tendríamos que hacer otro 
+            // evento con el "mouseout".
+            this.className = "color-red";
+          }
+        );
+
+        // Agregamos un evento para que al salir del párrafo se quite la clase 
+        // del ".color-red" y pueda actuar como la pseudoclase ":hover".
+        p1.addEventListener("mouseout",
+          function () {
+            this.className = "";
+          }
+        );
       });
 
   </script>

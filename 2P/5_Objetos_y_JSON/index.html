@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="es">
 
 <head>
   <meta charset="UTF-8">
@@ -27,7 +27,7 @@
      * Función para cargar JSON a un formulario. 
      * 
      * - Carga el JSON automáticamente al formulario al ser llamada la función.
-     * */
+     */
     function loadForm() {
       // Creamos cadena de texto JSON.
       // Al inicio no funcionaba porque tenía una coma (,) antes del corchete 
@@ -44,7 +44,19 @@
       document.forms["login"]["password"].value = data.password;
     }
 
-    // Event listener para ejecutar hasta que la página esté cargada.
+    /**
+     * - Lo que entendí después de una investigación respecto a 
+     * "DOMContentLoaded" y "load" es lo siguiente:
+     *  
+     * - Event listener para ejecutar hasta que la página esté cargada 
+     * ("DOMContentLoaded"). Este se activa cuando se carga el contenido del 
+     * HTML, pero sin incluir imágenes, gifs, y más recursos.
+     * 
+     * - Este es diferente al evento "load", el cual se puede encontrar en 
+     * etiquetas como `<body onload="">`, pero "load" difiere en el hecho de 
+     * que se activa cuando todo el contenido de la página cambia: scripts, 
+     * imágenes y demás.
+     */
     document.addEventListener("DOMContentLoaded",
       function () {
         // Obtener el evento del submit del formulario.
