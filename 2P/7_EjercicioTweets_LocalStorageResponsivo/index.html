@@ -21,6 +21,18 @@
     Ejercicio Tweets con LocalStorage y Responsivo | Lunes, 25 de OCTUBRE del
     2021
   </title>
+  <style>
+    /* Clase que hay que agregar en el Framework. */
+    .img-fluid {
+      /* Clase para que una imagen no se salga del contenedor. */
+      max-width: 100%;
+      /* Que el ancho no supere al contenedor. */
+      height: auto;
+      /* Que no pierda la relación de aspecto. */
+    }
+
+  </style>
+
 </head>
 
 <body>
@@ -47,12 +59,17 @@
         <!-- Estructura principal del tweet. -->
         <div class="row border-top">
           <div class="col-2">
-            Img
+            <img src="https://picsum.photos/200/" alt="" class="img-fluid">
           </div>
           <div class="col-9">
-            Tweet
+            Lorem ipsum dolor sit amet consectetur adipisicing elit. Quod saepe
+            et nisi voluptates tempore minus vel dolore, delectus nostrum itaque
+            accusantium! Quaerat inventore nobis est, saepe eveniet quis ipsa
+            omnis.
           </div>
-          <div class="col-1">X</div>
+          <div class="col-1">
+            <button class="btn btn-danger" title="Eliminar">X</button>
+          </div>
         </div>
       </div>
     </div>
