@@ -42,7 +42,7 @@
   <div class="row">
     <!-- 6 y 6 columnas: 12 -->
     <div class="col-6">
-      <form action="">
+      <form action="" name="tweetForm">
         <label for="tweet">Tweet: </label>
         <!-- Poner múltiples líneas de texto. -->
         <textarea name="tweet" title="tweet" placeholder=""></textarea>
@@ -54,7 +54,7 @@
     <div class="col-6">
       <!-- Lista de tweets. -->
       <h4>Mis Tweets</h4>
-      <!-- Desplegamos todos los elementos. -->
+      <!-- Desplegamos todos los elementos básicos de un Tweet. -->
       <div id="tweets">
         <!-- Estructura principal del tweet. -->
         <div class="row border-top">
@@ -74,6 +74,9 @@
       </div>
     </div>
   </div>
+
+  <!--  Script de JS, aunque podría ir en el head con el atributo "defer". -->
+  <script src="app.js"></script>
 </body>
 
 </html>
