@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <!-- 
+    Publicamos el repositorio del Framework que hicimos en clase a GitHub Pages 
+    para poder acceder a él desde internet sin tener que copiar todo su 
+    contenido una y otra vez. 
+
+    Para esto, tuvimos que hacer público el repositorio. Una vez realizado, se 
+    puede publicar el repo en GitHub Pages gratuitamente. Después, podemos 
+    acceder al contenido indicando la carpeta en donde está el código que 
+    necesitamos. En este caso, la carpeta y el archivo es "css/framework.css".
+  -->
+  <link rel="stylesheet"
+    href="https://fundamentos2122.github.io/framework-css-yeicobF/css/framework.css">
+  <title>
+    Ejercicio Tweets con LocalStorage y Responsivo | Lunes, 25 de OCTUBRE del
+    2021
+  </title>
+</head>
+
+<body>
+  <h1>Ejercicio Twitter</h1>
+
+  <!-- .row>.col-6{Formulario}+.col-6{Tweets} -->
+  <div class="row">
+    <!-- 6 y 6 columnas: 12 -->
+    <div class="col-6">
+      <form action="">
+        <label for="tweet">Tweet: </label>
+        <!-- Poner múltiples líneas de texto. -->
+        <textarea name="tweet" title="tweet" placeholder=""></textarea>
+        <div>
+          <button class="btn btn-primary" title="Enviar">Enviar</button>
+        </div>
+      </form>
+    </div>
+    <div class="col-6">
+      <!-- Lista de tweets. -->
+      <h4>Mis Tweets</h4>
+      <!-- Desplegamos todos los elementos. -->
+      <div id="tweets">
+        <!-- Estructura principal del tweet. -->
+        <div class="row border-top">
+          <div class="col-2">
+            Img
+          </div>
+          <div class="col-9">
+            Tweet
+          </div>
+          <div class="col-1">X</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</body>
+
+</html>
