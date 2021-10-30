@@ -1,4 +1,6 @@
-// @ts-check
+/**
+ * // @ts-check
+ */
 
 /**
  * Toda la lógica de Javascript.
@@ -55,12 +57,23 @@ function eventListener() {
    * probablemente cuando se recargue o se entre a la página).
    */
   document.addEventListener("DOMContentLoaded", showTweets);
+
+  /**
+   * Borrar tweets.
+   *
+   */
+  tweetList.addEventListener("click", removeTweet);
 }
 
 /**
  * Agregar un tweet al HTML para poder visualizarlo.
  * Es la misma estructura para todos, por eso solamente se pasa el Tweet como
  * parámetro.
+ *
+ * Dentro del html, agregamos una clase `button-close`, el cual, nos permitirá
+ * identificar cuando estemos presionando el botón de `X`, lo que eliminará el
+ * tweet. Este será un `bool` que indique `true` o `false` dependiendo de si se
+ * puede eliminar o no.
  *
  * @param {string} tweet Tweet que vamos a agregar la lista de tweets del HTML.
  */
@@ -99,7 +112,7 @@ function addTweet(tweet) {
       ${tweet}
     </div>
     <div class="col-1">
-      <button class="btn btn-danger" title="Eliminar">X</button>
+      <button class="btn btn-danger button-close" title="Eliminar" close="true">X</button>
     </div>
   `;
 
@@ -156,6 +169,16 @@ function getTweets() {
    *
    *    tweetsArray = tweetsString == null ? [] : JSON.parse(tweetsString);
    *
+   * ----
+   *
+   * En el if incluso podría no poner la condición de:
+   *
+   * >      if (tweetsString == null) {
+   * >        tweetsArray = [];
+   * >      }
+   *
+   * Esto sería porque ya tenemos el `tweetsArray` inicializado, y ya no
+   * sería necesario volver a iniciarlizarlo como arreglo vacío.
    */
   if (tweetsString == null) {
     /** Definimos un arreglo vacío. */
@@ -233,6 +256,77 @@ function showTweets() {
      */
     addTweet(tweet);
   });
+}
+
+/**
+ * Imprime toda la información de un evento, incluyendo
+ * `event.target.currentTarget` y `event.target.target`.
+ * @param {Event} event Evento.
+ */
+function printEventInfo(event) {
+  console.log(`event: ${event}`);
+  console.log(event);
+  /** Elemento específico que se presionó. */
+  console.log(`event.target: ${event.target}`);
+  console.log(event.target);
+  console.log(`event.target.className: ${event.target.className}`);
+  console.log(event.target.className);
+  console.log(`event.currentTarget: ${event.currentTarget}`);
+  console.log(event.currentTarget);
+  console.log(
+    `event.currentTarget.className: ${event.currentTarget.className}`,
+  );
+  console.log(event.currentTarget.className);
+  console.log("%cAtributo `close` si no es `null`:", "color: #10afc4");
+  /**
+   * Utilizo el null coalescing operator para imprimir el valor de close (true)
+   * si no es null. Si es null, muestra la string de la derecha.
+   *
+   * Así accedemos a los atributos de un `target`.
+   */
+  console.log(
+    `
+      %c${event.target.getAttribute("close") ?? "No existe el atributo `close`"}
+    `,
+    "color: #b6f2e4",
+  );
+  /**
+   * Quería mostrar atributos y encontré esto, pero no se pudo.
+   *
+   * console.log(`event.target.attributes: ${event.target.attributes}`);
+   * console.log(event.target.attributes);
+   *  console.log(
+   *  `event.target.dataset["close"]: ${event.target.dataset["close"]}`,
+   *  );
+   */
+  console.log("-------------");
+}
+
+/**
+ * Eliminar tweet. En esta ocasión no nos podemos guiar con un `id` , dado a que
+ * no hemos hecho uso de las bases de datos.
+ * @param {Event} event Evento del event listener.
+ */
+function removeTweet(event) {
+  printEventInfo(event);
+  /**
+   * Si el `target` presionado tiene la clase `button-close` (no está en el
+   * Framework), eliminar el tweet.
+   *
+   * Utilizamos el atributo `.className` para ver si tiene dicha clase dentro.
+   * Este es un método de las `string`, por lo que revisa si la cadena tiene
+   * este elemento.
+   */
+  if (event.target.className.includes("button-close")) {
+    console.log(
+      "Presionando el botón de eliminar tweet con clase `button-close`.",
+    );
+  }
+  if (event.target.getAttribute("close")) {
+    // https://stackoverflow.com/questions/30850158/i-need-value-from-a-named-node-map
+    // https://stackoverflow.com/a/30850437/13562806
+    console.log("Presionando el botón de eliminar tweet con atributo `close`.");
+  }
 }
 
 /* --------------------------- LLAMADA A FUNCIONES -------------------------- */
