@@ -108,7 +108,7 @@ function addTweet(tweet) {
     <div class="col-2">
       <img src="https://picsum.photos/200/" alt="" class="img-fluid" />
     </div>
-    <div class="col-9">
+    <div class="col-9 tweet-text">
       ${tweet}
     </div>
     <div class="col-1">
@@ -135,11 +135,13 @@ function addTweetToTweetList(event) {
   /**  Guardar el valor (texto) del tweet que obtenemos del form. */
   const tweet = tweetForm["tweet"].value;
 
+  // console.log(`tweetForm["tweet"].value: ${tweetForm["tweet"].value}`);
+
   // Agregamos el tweet al LocalStorage.
   addTweet(tweet);
 
   // Agregamos el tweet al LocalStorage.
-  saveTweet(tweet);
+  saveTweetLocalStorage(tweet);
 }
 
 /**
@@ -203,7 +205,7 @@ function getTweets() {
  *
  * @param {String} tweet Tweet como cadena de texto.
  */
-function saveTweet(tweet) {
+function saveTweetLocalStorage(tweet) {
   let tweets = getTweets();
 
   /** Añadimos el tweets a la list ade tweets. */
@@ -277,6 +279,13 @@ function printEventInfo(event) {
     `event.currentTarget.className: ${event.currentTarget.className}`,
   );
   console.log(event.currentTarget.className);
+  console.log(
+    `event.target.parentElement.parentElement: ${event.target.parentElement.parentElement}`,
+  );
+  console.log(event.target.parentElement.parentElement);
+  console.log(
+    `event.target.parentElement.parentElement.innerHTML: ${event.target.parentElement.parentElement.innerHTML}`,
+  );
   console.log("%cAtributo `close` si no es `null`:", "color: #10afc4");
   /**
    * Utilizo el null coalescing operator para imprimir el valor de close (true)
@@ -303,12 +312,86 @@ function printEventInfo(event) {
 }
 
 /**
- * Eliminar tweet. En esta ocasión no nos podemos guiar con un `id` , dado a que
- * no hemos hecho uso de las bases de datos.
+ * Eliminar tweet tanto del Local Storage como del DOM. En esta ocasión no nos
+ * podemos guiar con un `id` , dado a que no hemos hecho uso de las bases de
+ * datos.
+ *
+ * - Con `event.target` podemos saber a qué elemento le damos click, pero
+ * nosotros no queremos solo la `X`, sino todo el contenedor para eliminarlo
+ * completo, por lo que tenemos que acceder al padre,
+ * `event.target.parentElement`, y así sucesivamente hasta llegar al elemento
+ * que sí queremos eliminar, el contenedor principal de todo el tweet.
+ *
  * @param {Event} event Evento del event listener.
  */
 function removeTweet(event) {
-  printEventInfo(event);
+  // printEventInfo(event);
+
+  /**
+   * 1. Ver que damos click sobre el botón.
+   * 2. Obtener el contenedor principal que vamos a borrar, no solo el botón.
+   */
+  if (event.target.className.includes("button-close")) {
+    console.log(event.target.parentElement.parentElement);
+    /** Guardar el elemento padre para luego eliminarlo. */
+    var item = event.target.parentElement.parentElement;
+
+    /** 
+     * MÉTODO 1 PARA OBTENER EL TEXTO DEL TWEET --------------------------------
+     * 
+     * `item.getElementsByClassName("tweet")[0];`
+     */
+
+    /**
+     * Eliminar elemento del LocalStorage.
+     *
+     * Ahí solamente guardamos la cadena del Tweet, por lo que tendríamos que
+     * obtener esa parte. Para esto haremos uso de una clase auxiliar llamada
+     * `tweet-text`, para marcar o indicar que en ese elemento estará el texto
+     * del tweet.
+     *
+     * Obtenemos el tweet por el nombre de la clase. Hay que recordar que el
+     * método `.getElementsByClassName()` devuelve un array, y que el método `.
+     * getElementByClassName()` no existe. Solo existe el primero que devuelve
+     * el array.
+     *
+     * Como solo tendremos un elemento con esa clase dentro de los tweets, entonces tomaremos la posición 0 del arreglo:
+     *
+     * `item.getElementsByClassName("tweet-text")[0]`
+     */
+    var tweetMetodoUno = item.getElementsByClassName("tweet-text")[0];
+    console.log(`tweetMetodoUno: ${tweetMetodoUno}`);
+    console.log(tweetMetodoUno);
+    console.log(
+      `%ctweetMetodoUno.innerText (texto que eliminaríamos del LocalStorage): ${tweetMetodoUno.innerText}`, "color: hsl(150, 100%, 50%)"
+    );
+
+    /** Eliminar elemento del Local Storage con la cadena que obtuvimos. */
+    // tweetList
+
+    /**
+     * MÉTODO 2 PARA OBTENER TWEET ---------------------------------------------
+     * 
+     * Utilizar una substring. Este es el que utilizó el profe en la clase del 
+     * Jueves, 28/OCT.
+     */
+
+    /**
+     * Obtenemos una subcadena de todo el texto del `div` para solamente tomar 
+     * el texto. El problema es que el `.innerText` también devuelve la `X` del 
+     * botón de eliminar, por lo que hay que removerla.
+     * 
+     * Para solo obtener el texto del tweet sin la `X`, tenemos que quitar el último caracter, pero como el índice comienza desde 0, entonces tenemos que restar 2 ([-1 por la X] [-1 porque el índice comienza desde 0]).
+     */
+    var tweetMetodoDos = item.innerText.substring(0, item.innerText.length - 2);
+    console.log(
+      `%ctweetMetodoDos (texto que eliminaríamos del LocalStorage): ${tweetMetodoDos}`, "color: hsl(180, 100%, 50%)"
+    );
+
+
+    /** Eliminar elemento del DOM. -------------------------------------------*/
+    item.remove();
+  }
   /**
    * Si el `target` presionado tiene la clase `button-close` (no está en el
    * Framework), eliminar el tweet.
