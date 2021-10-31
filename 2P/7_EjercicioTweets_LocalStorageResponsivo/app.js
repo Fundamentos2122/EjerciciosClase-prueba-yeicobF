@@ -1,6 +1,4 @@
-/**
- * // @ts-check
- */
+/* // @ts-check */
 
 /**
  * Toda la lógica de Javascript.
@@ -342,8 +340,10 @@ function printEventInfo(event) {
  * @param {string} tweet Tweet a eliminar.
  */
 function removeTweetLocalStorageWithFilter(tweet) {
+  let tweets = getTweets();
+
   /** Tweets aplicando el método `.filter()`. */
-  tweetsWithFilter = tweets.filter((t) => t !== tweet);
+  let tweetsWithFilter = tweets.filter((t) => t !== tweet);
 
   console.log(
     "Tweets después de filter (se eliminaron todos los que cumplían con la condición, no solo el que queríamos):",
@@ -530,7 +530,7 @@ function removeTweet(event) {
      * cómo hacerlo. Tendré que investigar.
      */
     // removeTweetLocalStorage(tweetMetodoUno.innerText.trim());
-    
+
     /** Eliminar tweet del Local Storage con el método 2. */
     removeTweetLocalStorage(tweetMetodoDos);
 
