@@ -304,11 +304,142 @@ function printEventInfo(event) {
    *
    * console.log(`event.target.attributes: ${event.target.attributes}`);
    * console.log(event.target.attributes);
-   *  console.log(
-   *  `event.target.dataset["close"]: ${event.target.dataset["close"]}`,
-   *  );
+   *
+   * console.log(
+   * `event.target.dataset["close"]: ${event.target.dataset["close"]}`,
+   * );
+   *
    */
   console.log("-------------");
+}
+
+/**
+ * Elimina un tweet del Local Storage haciendo uso del método `.filter()`.
+ *
+ * Este método no funciona de la forma que debería, pero lo dejo porque es útil
+ * como documentación de las salidas que obtenemos en cada uno de los métodos.
+ *
+ * ## Solución con `.filter(...)`
+ *
+ * Obtenemos un elemento de un arreglo haciendo uso de funciones flecha.
+ *
+ * Hacemos uso de la función `.filter()`, utilizable en arreglos.
+ * - Obtener un arreglo que cumpla con las condiciones del filtro.
+ *
+ * > Obtener arreglo de tweets sin incluir el que queremos eliminar. Esto nos
+ * permitirá sustituir el Local Storage con la nueva cadena que no incluye el
+ * tweet a eliminar. De esta forma, no eliminamos el tweet como tal, sino que
+ * solo obtenemos un arreglo con todos los tweets a excepción del que
+ * queremos eliminar, y sustituimos la cadena del Local Storage con esta.
+ *
+ * ## Problema con este método
+ *
+ * **Lo malo de esta solución, es que el `.filter()` eliminaría todas las
+ * ocurrencias de la condición, por lo que si tenemos 2 tweets iguales, se
+ * eliminarían sin importar que no se trate del que se quiere eliminar, por
+ * lo que, tenemos que aplicar otro método.**
+ *
+ * @param {string} tweet Tweet a eliminar.
+ */
+function removeTweetLocalStorageWithFilter(tweet) {
+  /** Tweets aplicando el método `.filter()`. */
+  tweetsWithFilter = tweets.filter((t) => t !== tweet);
+
+  console.log(
+    "Tweets después de filter (se eliminaron todos los que cumplían con la condición, no solo el que queríamos):",
+  );
+  console.log(tweetsWithFilter);
+}
+
+/**
+ * Elimina un tweet del Local Storage.
+ *
+ * ---
+ * ## Problema
+ *
+ * El detalle con este método es que, aunque solo se borre 1 tweet, no se
+ * borrará precisamente el que queremos, sino que se borrará el primero que se
+ * encuentre en el ciclo.
+ *
+ * La cuestión es que, al no tener `ids` confiables aún, es la mejor solución
+ * posible. Una vez utilicemos los `ids`, ya podremos hacerlo de mejor manera y
+ * borrando el que queremos, no el primero que se encuentre en el ciclo o cosas
+ * por el estilo.
+ *
+ * - También hay otro problema, y es cuando las cadenas se guardan con signos
+ * como "\n" y parecidos, ya que en el Local Storage se guardan con ese
+ * formato, pero en el texto obtenido del DIV no se guardan. Creo que esto se
+ * puede alcanzar con el `.innerHTML` del elemento obtenido directamente de la
+ * clase, en lugar del obtenido haciendo la substring.
+ * ---
+ *
+ * Hacemos uso de un `for()` y `.splice()` para poder eliminar solo el elemento
+ * buscado y no todos los elementos. En la otra solución utilizamos
+ * `.filter()`, pero se eliminan **TODAS** las ocurrencias del tweet y no solo
+ * la deseada o al menos 1 sola. Esto está implementado en la función
+ * `removeTweetLocalStorageWithFilter(tweet)`.
+ *
+ * ## Solución con `.splice()`
+ *
+ * Elimina un rango de elementos del arreglo y recibe los parámetros.
+ *
+ * ## Parámetros
+ *
+ * `.splice(posicionInicialAPartirDeDondeVaAEliminar, numeroElementosAEliminar)`
+ *
+ * @param {string} tweet Tweet a eliminar.
+ */
+function removeTweetLocalStorage(tweet) {
+  let tweets = getTweets();
+  /**
+   * Tweets que se obtienen con el método `.splice()`.
+   * - Este es el método que utilizaremos.
+   *
+   * No lo hago directamente con `tweets` para poder utilizarlos con los 2
+   * métodos y comparar.
+   *
+   * > No es necesario hacer esto, pero ya lo había hecho cuando tenía también
+   * > el filter en esta misma función. Así que mejor lo dejo así.
+   */
+  let tweetsWithSplice = tweets;
+
+  console.log("Tweets antes de eliminar:");
+  console.log(tweets);
+  console.log(
+    `%cTweet a eliminar: %c${tweet}`,
+    "color: hsl(100, 100%, 50%)",
+    "color: hsl(20, 100%, 50%)",
+  );
+  /**
+   * Solución con `for(...)`
+   */
+  for (var i = 0; i < tweetsWithSplice.length; i++) {
+    /**
+     * Cuando eliminemos un elemento, saldremos del ciclo para no eliminar otro
+     * repetido.
+     */
+    if (tweetsWithSplice[i] === tweet) {
+      tweetsWithSplice.splice(i, 1);
+      break;
+    }
+  }
+  /**
+   * Solo imprimí así para hacer el experimento. Se regresa cada elemento del
+   * arreglo, y después se unen para hacer una string con una "," al final (el
+   * método `.join()` la agrega automáticamente).
+   */
+  // console.log(
+  //   `Tweets después de ".splice()":
+  //   ${tweetsWithSplice.map((t) => `"${t}"`).join()}`,
+  // );
+  console.log("Tweets después de `.splice()`:");
+  console.log(tweetsWithSplice);
+
+  /**
+   * Guardamos los tweets en LocalStorage sin incluir el que ya eliminamos.
+   * Convertimos a string para guardarlos.
+   */
+  localStorage.setItem(tweetsKey, JSON.stringify(tweetsWithSplice));
 }
 
 /**
@@ -336,9 +467,9 @@ function removeTweet(event) {
     /** Guardar el elemento padre para luego eliminarlo. */
     var item = event.target.parentElement.parentElement;
 
-    /** 
+    /**
      * MÉTODO 1 PARA OBTENER EL TEXTO DEL TWEET --------------------------------
-     * 
+     *
      * `item.getElementsByClassName("tweet")[0];`
      */
 
@@ -363,7 +494,8 @@ function removeTweet(event) {
     console.log(`tweetMetodoUno: ${tweetMetodoUno}`);
     console.log(tweetMetodoUno);
     console.log(
-      `%ctweetMetodoUno.innerText (texto que eliminaríamos del LocalStorage): ${tweetMetodoUno.innerText}`, "color: hsl(150, 100%, 50%)"
+      `%ctweetMetodoUno.innerText (texto que eliminaríamos del LocalStorage): ${tweetMetodoUno.innerText}`,
+      "color: hsl(150, 100%, 50%)",
     );
 
     /** Eliminar elemento del Local Storage con la cadena que obtuvimos. */
@@ -371,27 +503,41 @@ function removeTweet(event) {
 
     /**
      * MÉTODO 2 PARA OBTENER TWEET ---------------------------------------------
-     * 
-     * Utilizar una substring. Este es el que utilizó el profe en la clase del 
+     *
+     * Utilizar una substring. Este es el que utilizó el profe en la clase del
      * Jueves, 28/OCT.
      */
 
     /**
-     * Obtenemos una subcadena de todo el texto del `div` para solamente tomar 
-     * el texto. El problema es que el `.innerText` también devuelve la `X` del 
+     * Obtenemos una subcadena de todo el texto del `div` para solamente tomar
+     * el texto. El problema es que el `.innerText` también devuelve la `X` del
      * botón de eliminar, por lo que hay que removerla.
-     * 
+     *
      * Para solo obtener el texto del tweet sin la `X`, tenemos que quitar el último caracter, pero como el índice comienza desde 0, entonces tenemos que restar 2 ([-1 por la X] [-1 porque el índice comienza desde 0]).
      */
     var tweetMetodoDos = item.innerText.substring(0, item.innerText.length - 2);
     console.log(
-      `%ctweetMetodoDos (texto que eliminaríamos del LocalStorage): ${tweetMetodoDos}`, "color: hsl(180, 100%, 50%)"
+      `%ctweetMetodoDos (texto que eliminaríamos del LocalStorage): ${tweetMetodoDos}`,
+      "color: hsl(180, 100%, 50%)",
     );
 
+    /**
+     * Eliminar tweet del Local Storage con el método 1.
+     *
+     * Quise hacer un trim() para ver si así podía eliminar el texto del
+     * LocalStorage, pero no puedo. Lo que tendría que hacer es obtener el
+     * texto junto a sus caracteres de escape ("\n" principalmente), pero no sé
+     * cómo hacerlo. Tendré que investigar.
+     */
+    // removeTweetLocalStorage(tweetMetodoUno.innerText.trim());
+    
+    /** Eliminar tweet del Local Storage con el método 2. */
+    removeTweetLocalStorage(tweetMetodoDos);
 
     /** Eliminar elemento del DOM. -------------------------------------------*/
     item.remove();
   }
+
   /**
    * Si el `target` presionado tiene la clase `button-close` (no está en el
    * Framework), eliminar el tweet.
